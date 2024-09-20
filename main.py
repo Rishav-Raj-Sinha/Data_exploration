@@ -8,10 +8,14 @@ hide_decoration_bar_style = '''<style>header {visibility: hidden;}
 st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
 # <style> .main {overflow: hidden} </style>
 with st.container(border =True):
-    cola,colb = st.columns([0.8,0.2],vertical_alignment="center")
+    cola,colb,colc = st.columns([0.4,0.4,0.2],gap="medium")
     with cola:
         st.title("Data Exploration")
+        st.write("Data exploration in the context of machine learning refers to the initial phase of analyzing a dataset to understand its structure, characteristics, and underlying patterns before building any predictive models. This step is crucial because it helps to identify important insights, detect anomalies, and determine the best approach for preparing the data for modeling.")
     with colb:
+        st.header("The Explorer's Guide")
+        st.write("Imagine you're in a dungeon, searching for valuable information. You stumble upon two old maps that seem incomplete individually.")
+    with colc:
         st.image("_2ab7699c-321f-42d0-bff2-68c186ce3568.jpeg")
 
 col1, col2 = st.columns(2)
@@ -43,10 +47,15 @@ with col2:
 # Proceed only if both files are uploaded
 if not df1.empty and not df2.empty:
     with st.container(border =True):
-        cola,colb = st.columns([0.8,0.2],vertical_alignment="center")
+        cola,colb,colc = st.columns([0.4,0.4,0.2],gap="medium")
         with cola:
             st.header("Table Joins :")
+            st.write('Table joins are operations in relational databases used to combine data from two or more tables based on a related column, often referred to as a "key." Joins allow you to query and analyze data that is spread across multiple tables by merging relevant records into a single dataset.')
         with colb:
+            st.header("Merging the Maps: Uniting Clues for a Clearer Path")
+            st.write("Upon closer inspection, you notice that both maps share similar symbols or landmarks, so you decide to join them. This process represents table joins, where you merge two separate pieces of information (tables) based on common elements (keys) to get a more complete view of the world (data).")
+
+        with colc:
             st.image("join.jpeg")
 
     with st.container(border =True):
@@ -79,16 +88,20 @@ if not df1.empty and not df2.empty:
         elif join_type == "FULL OUTER JOIN":
             result = pd.merge(df1, df2, left_on=col1, right_on=col2, how='outer')
 
-
-        # Display the result
         st.write(f"**Result of {join_type}:**")
         st.dataframe(result)
 
     with st.container(border =True):
-        cola,colb = st.columns([0.8,0.2],vertical_alignment="center")
+        cola,colb,colc = st.columns([0.4,0.4,0.2],gap="medium")
         with cola:
             st.header("Aggregate Results :")
+            st.write("Aggregate results in databases refer to the summary statistics or computations performed on a set of values, returning a single result for each group of data. These operations are crucial for summarizing large datasets, providing insights by computing metrics such as sums, averages, counts, or other statistical values.")
         with colb:
+            st.header("Unveiling Insights: The Power of Aggregate Results")
+            st.write("Once the maps are joined, you start carefully analyzing the connections between different landmarks, identifying patterns and drawing insights. This part is similar to aggregating data, where you look for trends or important relationships by summarizing data—like counting treasures in each section of the dungeon or finding the most traveled routes.")
+
+
+        with colc:
             st.image("aggregate.jpeg")
     col11,col22 = st.columns(2)
     with col11:
@@ -103,10 +116,16 @@ if not df1.empty and not df2.empty:
             st.dataframe(df2_results)
 
     with st.container(border =True):
-        cola,colb = st.columns([0.8,0.2],vertical_alignment="center")
+        cola,colb,colc = st.columns([0.4,0.4,0.2],gap="medium")
         with cola:
             st.header("Window Functions :")
+            st.write('Window functions are advanced tools used in data analysis to perform calculations across a subset of data, referred to as a "window," while preserving individual records. Unlike standard aggregation methods that summarize entire datasets into a single result for each group, window functions allow you to compute values like running totals, ranks, and comparisons without collapsing the underlying data.')
+
         with colb:
+            st.header("Navigating the Details: Unearthing Insights with Window Functions")
+            st.write("But you're not done yet. To truly understand the dungeon, you begin reviewing the detailed paths across different sections of the map—comparing one path to the next, tracing routes from one point to another. This mirrors the role of window functions, where you analyze data row by row, comparing each element with its neighbors to extract deeper insights, such as tracking how treasure accumulates or how paths rank against each other. ")
+
+        with colc:
             st.image("window.jpeg")
     with st.container(border =True):
 
@@ -124,7 +143,6 @@ if not df1.empty and not df2.empty:
         col111,col222 = st.columns(2)
 
         with col111:
-            # Apply the selected operation
             if operation == "ROW_NUMBER":
                 if partition_col:
                     df1['row_number'] = df1.groupby(partition_col).cumcount() + 1
@@ -157,7 +175,6 @@ if not df1.empty and not df2.empty:
                 st.write("Result after applying LEAD():")
                 st.dataframe(df1)
         with col222:
-            # Apply the selected operation
             if operation == "ROW_NUMBER":
                 if partition_col:
                     df2['row_number'] = df2.groupby(partition_col).cumcount() + 1
@@ -190,6 +207,41 @@ if not df1.empty and not df2.empty:
                 st.write("Result after applying LEAD():")
                 st.dataframe(df2)
 
+    with st.container(border =True):
+        cola,colb,colc = st.columns([0.4,0.4,0.2],gap="medium")
+        with cola:
+             st.header("Dates :")
+             st.write('In data exploration, handling dates effectively allows for meaningful temporal analysis, such as identifying trends and seasonality. Converting date columns to datetime objects enables easy extraction of components (year, month, day) and facilitates filtering and resampling. Proper date manipulation enhances insights into patterns over time, making it crucial for time series analysis.')
+        with colb:
+            st.header("Sands of time")
+            st.write("You notice dates etched into the corners, marking significant events and discoveries. You start sorting the information by these dates, revealing a timeline of events that uncovers trends in path popularity over time. This reflects the data exploration phase, where organizing temporal data helps identify patterns and relationships, guiding deeper insights and understanding for your journey ahead.")
+        with colc:
+            st.image("time.jpeg")
+    with st.container(border=True):
+
+        col1111,col2222 = st.columns(2)
+        with col1111:
+            date_col1 = st.selectbox("select the date column if any", df1.columns)
+            df1[date_col1] = pd.to_datetime(df1[date_col1])
+            x,y = df1[date_col1].min(), df1[date_col1].max()
+            st.write(f"min = {x}, max = {y}")
+            st.write("Date Info added to table")
+            df1['year'] = df1[date_col1].dt.year
+            df1['month'] = df1[date_col1].dt.month
+            df1['day'] = df1[date_col1].dt.day
+            df1['weekday'] = df1[date_col1].dt.weekday
+            st.dataframe(df1)
+        with col2222:
+            date_col2 = st.selectbox("select the date column if any", df2.columns)
+            df2[date_col2] = pd.to_datetime(df2[date_col2], format='%d/%m/%Y', errors='coerce')
+            x, y = df2[date_col2].min(), df2[date_col2].max()
+            st.write(f"min = {x}, max = {y}")
+            st.write("Date Info added to table")
+            df2['year'] = df2[date_col2].dt.year
+            df2['month'] = df2[date_col2].dt.month
+            df2['day'] = df2[date_col2].dt.day
+            df2['weekday'] = df2[date_col2].dt.weekday
+            st.dataframe(df2)
 
 else:
     st.warning("Please upload both CSV files to proceed.")
