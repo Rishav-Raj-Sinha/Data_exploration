@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 
 # # Set page configuration and hide headers/footers
-# st.set_page_config(page_title="Data Transformer", layout="wide", initial_sidebar_state="collapsed")
-# hide_decoration_bar_style = '''<style>header {visibility: hidden;}
-# </style><style>footer{visibility: hidden;}</style>'''
-# st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
+st.set_page_config(page_title="Data Transformer", layout="wide", initial_sidebar_state="collapsed")
+hide_decoration_bar_style = '''<style>header {visibility: hidden;}
+</style><style>footer{visibility: hidden;}</style>'''
+st.markdown(hide_decoration_bar_style, unsafe_allow_html=True)
 # <style> .main {overflow: hidden} </style>
 with st.container(border =True):
     cola,colb = st.columns([0.8,0.2],vertical_alignment="center")
