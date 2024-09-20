@@ -4,9 +4,9 @@ Sure! Here’s the documentation in markdown format:
 
 # Data Transformer Documentation
 
-![](assets/A4 - 1 (3).png)
-![](assets/A4 - 2.png)
-![](assets/A4 - 3.png)
+![](1.png)
+![](2.png)
+![](3.png)
 
 
 ## Overview
