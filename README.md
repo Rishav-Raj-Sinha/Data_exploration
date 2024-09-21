@@ -1,7 +1,7 @@
 
 ---
 
-# Data Transformer Documentation
+# Data Explorer Documentation
 
 ![](1.png)
 ![](2.png)
@@ -84,6 +84,6 @@ pip install streamlit pandas
 
 ## Conclusion
 
-The Data Transformer app serves as a powerful tool for data exploration, offering essential functionalities for data manipulation and analysis. It is user-friendly and supports users in deriving insights from their datasets efficiently.
+The Data Explorer app serves as a powerful tool for data exploration, offering essential functionalities for data manipulation and analysis. It is user-friendly and supports users in deriving insights from their datasets efficiently.
 
 ---
