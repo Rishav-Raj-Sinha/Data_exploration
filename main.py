@@ -234,7 +234,7 @@ if not df1.empty and not df2.empty:
         with col2222:
             date_col2 = st.selectbox("select the date column if any", df2.columns)
             df2[date_col2] = pd.to_datetime(df2[date_col2], format='%d/%m/%Y', errors='coerce')
-            x, y = df2[date_col2].min(), df2[date_col2].max()
+            s, t = df2[date_col2].min(), df2[date_col2].max()
             st.write(f"min = {x}, max = {y}")
             st.write("Date Info added to table")
             df2['year'] = df2[date_col2].dt.year
