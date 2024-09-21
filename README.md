@@ -1,4 +1,3 @@
-Sure! Here’s the documentation in markdown format:
 
 ---
 
@@ -11,7 +10,7 @@ Sure! Here’s the documentation in markdown format:
 
 ## Overview
 
-The **Data Transformer** application is designed to facilitate data exploration and transformation through file uploads and various data manipulation operations. Users can upload two CSV files, merge them using different join types, and perform aggregations and window functions. The application also supports date handling for temporal analysis.
+The **Data Explorer** application is designed to facilitate data exploration and transformation through file uploads and various data manipulation operations. Users can upload two CSV files, merge them using different join types, and perform aggregations and window functions. The application also supports date handling for temporal analysis.
 
 ## Features
 
